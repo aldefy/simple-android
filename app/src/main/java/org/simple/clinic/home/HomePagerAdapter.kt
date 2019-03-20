@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.simple.clinic.R
+import org.simple.clinic.home.help.HelpScreenKey
 import org.simple.clinic.home.overdue.OverdueScreenKey
 import org.simple.clinic.home.patients.PatientsScreenKey
 import org.simple.clinic.home.report.ReportsScreenKey
@@ -40,5 +41,7 @@ private enum class HomeTabs(@LayoutRes val key: Int, @StringRes val title: Int) 
 
   OVERDUE(OverdueScreenKey().layoutRes(), R.string.tab_overdue),
 
-  REPORTS(ReportsScreenKey().layoutRes(), R.string.tab_progress)
+  REPORTS(ReportsScreenKey().layoutRes(), R.string.tab_progress),
+
+  HELP(HelpScreenKey().layoutRes(), R.string.tab_help)
 }

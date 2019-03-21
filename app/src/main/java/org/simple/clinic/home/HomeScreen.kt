@@ -58,7 +58,7 @@ class HomeScreen(context: Context, attrs: AttributeSet) : RelativeLayout(context
     // starting solves it at the expense of (theoretically) delaying the app startup
     // slightly. The delay seems to be unnoticeable in our limited testing so this
     // feels harmless.
-    viewPager.offscreenPageLimit = HomeTab.PATIENT.ordinal - HomeTab.REPORTS.ordinal
+    viewPager.offscreenPageLimit = HomeTab.PATIENTS.ordinal - HomeTab.REPORTS.ordinal
   }
 
   private fun screenCreates() = Observable.just(ScreenCreated())

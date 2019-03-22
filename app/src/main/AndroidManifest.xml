@@ -55,11 +55,6 @@
       android:windowSoftInputMode="adjustResize" />
 
     <activity
-      android:name=".home.overdue.removepatient.RemoveAppointmentSheet"
-      android:theme="@style/Clinic.V2.Theme.BottomSheetActivity"
-      android:windowSoftInputMode="adjustResize" />
-
-    <activity
       android:name=".drugs.selection.dosage.DosagePickerSheet"
       android:theme="@style/Clinic.V2.Theme.BottomSheetActivity"
       android:windowSoftInputMode="adjustResize" />

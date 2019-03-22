@@ -2,13 +2,12 @@ package org.simple.clinic.router.screen
 
 import android.app.Activity
 import android.content.Context
-import androidx.annotation.ColorRes
-import androidx.annotation.IdRes
-import androidx.core.content.ContextCompat
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.ColorRes
+import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 import flow.Direction
 import flow.KeyChanger
 import flow.State
@@ -93,58 +92,12 @@ class FullScreenKeyChanger(
       return
     }
 
-    val scaleChange = 0.05f
-    val duration = SCREEN_CHANGE_ANIMATION_DURATION
-    val interpolator = FastOutSlowInInterpolator()
-
-    if (direction == Direction.FORWARD || direction == Direction.REPLACE) {
-      outgoingView.animate()
-          .scaleX(1f - scaleChange)
-          .scaleY(1f - scaleChange)
-          .alpha(0f)
-          .setDuration(duration)
-          .setInterpolator(interpolator)
-          .start()
-
-    } else {
-      outgoingView.animate()
-          .scaleX(1f + scaleChange)
-          .scaleY(1f + scaleChange)
-          .alpha(0f)
-          .setDuration(duration)
-          .setInterpolator(interpolator)
-          .start()
-    }
-
-    if (direction == Direction.FORWARD || direction == Direction.REPLACE) {
-      incomingView.scaleX = 1f + scaleChange
-      incomingView.scaleY = 1f + scaleChange
-      incomingView.alpha = 0f
-      incomingView.animate()
-          .scaleX(1f)
-          .scaleY(1f)
-          .alpha(1f)
-          .setDuration(duration)
-          .setInterpolator(interpolator)
-          .withEndAction {
-            onCompleteListener.invoke()
-          }
-          .start()
-
-    } else {
-      incomingView.scaleX = 1f - scaleChange
-      incomingView.scaleY = 1f - scaleChange
-      incomingView.alpha = 0f
-      incomingView.animate()
-          .scaleX(1f)
-          .scaleY(1f)
-          .alpha(1f)
-          .setDuration(duration)
-          .setInterpolator(interpolator)
-          .withEndAction {
-            onCompleteListener.invoke()
-          }
-          .start()
-    }
+    incomingKey.animate(
+        outgoingView = outgoingView,
+        incomingView = incomingView,
+        direction = direction,
+        outgoingKey = outgoingKey,
+        onCompleteListener = onCompleteListener
+    )
   }
 }
